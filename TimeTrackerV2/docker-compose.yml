@@ -1,8 +1,10 @@
 version: "3.9"
 services:
     node:
+        tty: true
         build: .
         ports:
-            - "4200:4200"
+            - '4200:4200'
         volumes:
-            - .:/usr/src/app
+            - ../TimeTrackerV2:/usr/src/app
+            - /usr/src/app/node_modules

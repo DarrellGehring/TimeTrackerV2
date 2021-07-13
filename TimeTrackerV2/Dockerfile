@@ -9,7 +9,8 @@ RUN npm install
 
 COPY . .
 
+RUN set -ex && apk --no-cache add sudo
+
 EXPOSE 4200
 
-CMD /usr/src/app/node_modules/.bin/ng serve --host 0.0.0.0 --disableHostCheck
-CMD npm run watch
+CMD sudo node_modules/.bin/ng serve --watch --host 0.0.0.0 --disableHostCheck
