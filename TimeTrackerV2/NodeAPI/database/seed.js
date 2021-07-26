@@ -6,3 +6,11 @@ let db = new sqlite3.Database('./main.db', sqlite3.OPEN_READWRITE | sqlite3.OPEN
     }
     console.log('Connected to the main database.');
   });
+
+db.run(`CREATE TABLE Users(userID INTEGER PRIMARY KEY, 
+                            username TEXT NOT NULL,
+                            password TEXT NOT NULL,
+                            firstName TEXT NOT NULL,
+                            lastName TEXT NOT NULL,
+                            type TEXT NOT NULL,
+                            isActive BOOL NOT NULL);`)
