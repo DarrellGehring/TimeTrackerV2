@@ -1,0 +1,22 @@
+version: "3.9"
+services:
+    angular:
+        tty: true
+        build:
+            context: './Angular'
+            dockerfile: Dockerfile
+        ports:
+            - '4200:4200'
+        volumes:
+            - ./Angular:/usr/src/app
+            - /usr/src/app/node_modules
+    node:
+        tty: true
+        build:
+            context: './NodeAPI'
+            dockerfile: Dockerfile
+        ports:
+            - '8080:8080'
+        volumes:
+            - ./NodeAPI:/usr/src/app
+            - /usr/src/app/node_modules
