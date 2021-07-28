@@ -1,29 +1,112 @@
   
-<div id="login" ng-cloak>
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>>
 
-  <div class="row no-gutters">
-    <div class="col"></div> <!-- Extra col div for some auto bootstrap centering -->
-    <div class="card mt-5 col-10 col-sm-6 col-md-5 col-xl-3">
-      <div class="card-header">Login</div>
-      <div class="card-body">
-        <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
-          <div class="input-group">
-            <div class="input-group-prepend"><span class="input-group-text" style="width: 40px; border: none; border-bottom-left-radius: 0;"><i class="fa fa-user" aria-hidden="true"></i></span></div>
-            <input formControlName="username" id="username" type="text" class="form-control bg-light" style="border: none; border-bottom-right-radius: 0;" name="username" placeholder="Username" ng-model="">
-          </div>
-          <div class="input-group" style="margin-top: 1px;">
-            <div class="input-group-prepend"><span class="input-group-text" style="width:40px; border: none; border-top-left-radius: 0;"><i class="fa fa-lock" aria-hidden="true"></i></span></div>
-            <input formControlName="password" id="password" type="password" class="form-control bg-light" style="border: none; border-top-right-radius: 0;" name="password" placeholder="Password" ng-model="">
-          </div>
-          <div class="row mt-2 pl-3 pr-3">
-            <button type="button" class="btn btn-info col mr-1" ng-click="">Register</button>
-            <button type="submit" class="btn btn-primary col ml-1">Login</button>
-          </div>
-        </form>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+  <style>
+
+    .spacer {
+      flex: 1;
+    }
+    
+    .custom-toggler .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0,123,255, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+    }
+
+    .custom-toggler.navbar-toggler {
+      border-color: #007bff;
+    } 
+
+    .navbar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      background-color: #492365;
+      color: #007bff;
+      font-weight: 600;
+    }
+
+    .navbar img {
+      margin: 0 16px;
+    }
+
+    .navbar #usernamelbl
+    {
+      margin: 0 16px;
+    }
+
+    a,
+    a:visited,
+    a:hover {
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: #125699;
+    }
+  </style>
+
+  <!-- Toolbar -->
+  <div class="navbar navbar-expand-lg fixed-top">
+    <a class="navbar-left" >
+      <img height="40" alt="Time Tracker Logo" src="../assets/Images/TimeTrackerLogo.png"/>
+    </a>
+    <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+          <a class="nav-item nav-link active" href="#">Dashboard</a>
+          <a class="nav-item nav-link active" href="#">Courses</a>
+          <a class="nav-item nav-link active" href="#">Users</a>
+          <a class="nav-item nav-link active" href="#">Evaluations</a>
+          <a class="nav-item nav-link active" href="#">Admin Evaluations</a>
       </div>
+      
+      <div class="navbar-nav ml-auto">
+        <a class="nav-item nav-link active" href="#">Username</a>
+      </div>
+
+      <form class="form-inline my-2 my-lg-0">
+        <button class="btn btn-primary my-2 my-sm-0 btn1" type="submit">Login</button>
+    </form>
     </div>
-    <div class="col"></div> <!-- Extra col div for some auto bootstrap centering -->
   </div>
-</div>
+  <div id="login" ng-cloak>
+    <div class="row no-gutters">
+      <div class="col"></div> <!-- Extra col div for some auto bootstrap centering -->
+      <div class="card mt-5 col-10 col-sm-6 col-md-5 col-xl-3">
+        <div class="card-header">Login</div>
+        <div class="card-body">
+          <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+            <div class="input-group">
+              <div class="input-group-prepend"><span class="input-group-text" style="width: 40px; border: none; border-bottom-left-radius: 0;"><i class="fa fa-user" aria-hidden="true"></i></span></div>
+              <input formControlName="username" id="username" type="text" class="form-control bg-light" style="border: none; border-bottom-right-radius: 0;" name="username" placeholder="Username" ng-model="">
+            </div>
+            <div class="input-group" style="margin-top: 1px;">
+              <div class="input-group-prepend"><span class="input-group-text" style="width:40px; border: none; border-top-left-radius: 0;"><i class="fa fa-lock" aria-hidden="true"></i></span></div>
+              <input formControlName="password" id="password" type="password" class="form-control bg-light" style="border: none; border-top-right-radius: 0;" name="password" placeholder="Password" ng-model="">
+            </div>
+            <div class="row mt-2 pl-3 pr-3">
+              <button type="button" class="btn btn-info col mr-1" ng-click="">Register</button>
+              <button type="submit" class="btn btn-primary col ml-1">Login</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="col"></div> <!-- Extra col div for some auto bootstrap centering -->
+    </div>
+  </div>
+</html>
 
 <router-outlet></router-outlet>
