@@ -1,21 +1,3 @@
-<ul>
-  <li><a routerLink="./admin-evals">Admin Evals</a></li>
-  <li><a routerLink="./assign-evals">Assign Evals</a></li>
-  <li><a routerLink="./course">Course</a></li>
-  <li><a routerLink="./courses">Courses</a></li>
-  <li><a routerLink="./dashboard">Dashboard</a></li>
-  <li><a routerLink="./eval">Eval</a></li>
-  <li><a routerLink="./group">Group</a></li>
-  <li><a routerLink="./login">Login</a></li>
-  <li><a routerLink="./manage-evals">Manage Evals</a></li>
-  <li><a routerLink="./project">Project</a></li>
-  <li><a routerLink="./register">Register</a></li>
-  <li><a routerLink="./user">User</a></li>
-  <li><a routerLink="./users">Users</a></li>
-  <li><a routerLink="./view-eval">View Eval</a></li>
-  <li><a routerLink="./view-evals">View Evals</a></li>
-</ul>
-  
 <!doctype html>
 <html lang="en">
   <head>
@@ -83,11 +65,19 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-          <a class="nav-item nav-link active" href="#">Dashboard</a>
-          <a class="nav-item nav-link active" href="#">Courses</a>
-          <a class="nav-item nav-link active" href="#">Users</a>
-          <a class="nav-item nav-link active" href="#">Evaluations</a>
-          <a class="nav-item nav-link active" href="#">Admin Evaluations</a>
+          <a class="nav-item nav-link active" routerLink="./dashboard">Dashboard</a>
+          <a class="nav-item nav-link active" routerLink="./course">Course</a></a>
+          <a class="nav-item nav-link active" routerLink="./courses">Courses</a>
+          <a class="nav-item nav-link active" routerLink="./admin-evals">Admin Evals</a>
+          <a class="nav-item nav-link active" routerLink="./assign-evals">Assign Evals</a>
+          <a class="nav-item nav-link active" routerLink="./eval">Eval</a>
+          <a class="nav-item nav-link active" routerLink="./group">Group</a>
+          <a class="nav-item nav-link active" routerLink="./project">Project</a>
+          <a class="nav-item nav-link active" routerLink="./register">Register</a>
+          <a class="nav-item nav-link active" routerLink="./user">User</a>
+          <a class="nav-item nav-link active" routerLink="./users">Users</a>
+          <a class="nav-item nav-link active" routerLink="./view-eval">View Eval</a>
+          <a class="nav-item nav-link active" routerLink="./view-evals">View Evals</a>
       </div>
       
       <div class="navbar-nav ml-auto">
@@ -95,7 +85,7 @@
       </div>
 
       <form class="form-inline my-2 my-lg-0">
-        <button class="btn btn-primary my-2 my-sm-0 btn1" type="submit">Login</button>
+        <button class="btn btn-primary my-2 my-sm-0 btn1" type="submit" routerLink="./login">Login<button>
     </form>
     </div>
   </div>
