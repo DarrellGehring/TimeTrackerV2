@@ -38,7 +38,7 @@ app.post('/register', async (req, res, next) => {
   isEmpty(req.body["lastName"]) ||
   isEmpty(req.body["password"]) ||
   isEmpty(req.body["repeatPassword"])) {
-    return res.status(400).send('Missing one or more required arguments.');
+    return res.status(400).json({message: 'Missing one or more required arguments.'});
   };
 
   // Validate user doesn't already exist
@@ -46,16 +46,16 @@ app.post('/register', async (req, res, next) => {
   db.get(sql, [req.body["username"]], (err, rows) => {
 
     if (err) {
-      return res.status(500).send('Something went wrong. Please try again later.');
+      return res.status(500).json({message: 'Something went wrong. Please try again later.'});
     }
 
     if(rows) {
-      return res.status(400).send('A user of this name already exists');
+      return res.status(400).json({message: 'A user of this name already exists'});
     }
 
     // Validate passwords match
     if(req.body["password"] !== req.body["repeatPassword"]) {
-      return res.status(400).send('Given passwords do not match');
+      return res.status(400).json({message: 'Given passwords do not match'});
     }
     
     let salt = crypto.randomBytes(16).toString('hex');
@@ -76,9 +76,9 @@ app.post('/register', async (req, res, next) => {
 
     db.run(`INSERT INTO Users(username, password, firstName, lastName, type, isActive, salt) VALUES(?, ?, ?, ?, ?, ?, ?)`, data, function(err, rows) {
       if (err) {
-        return res.status(500).send('Something went wrong. Please try again later.');
+        return res.status(500).json({message: 'Something went wrong. Please try again later.'});
       } else {
-        return res.status(200).send('User registered');
+        return res.status(200).json({message: 'User registered'});
       }
     });
   });
