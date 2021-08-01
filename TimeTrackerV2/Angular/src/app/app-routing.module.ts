@@ -17,6 +17,7 @@ import { ViewEvalComponent } from './view-eval/view-eval.component';
 import { ViewEvalsComponent } from './view-evals/view-evals.component';
 
 const routes: Routes = [
+  { path: '', component: LoginComponent },
   { path: 'admin-evals', component: AdminEvalsComponent },
   { path: 'assign-evals', component: AssignEvalsComponent },
   { path: 'course', component: CourseComponent },
@@ -24,7 +25,6 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'eval', component: EvalComponent },
   { path: 'group', component: GroupComponent },
-  { path: 'login', component: LoginComponent },
   { path: 'manage-evals', component: ManageEvalsComponent },
   { path: 'project', component: ProjectComponent },
   { path: 'register', component: RegisterComponent },
