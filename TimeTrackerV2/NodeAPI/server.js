@@ -84,6 +84,41 @@ app.post('/register', async (req, res, next) => {
   });
 });
 
+app.post('/login', async (req, res, next) => {
+  function isEmpty(str) {
+    return (!str || str.length === 0 );
+  }
+
+  console.log(req.body);
+
+  if(isEmpty(req.body["username"]) ||
+  isEmpty(req.body["password"])) {
+    return res.status(400).json({message: 'Missing one or more required arguments.'});
+  };
+
+  let sql = `SELECT * FROM Users WHERE username = ?`;
+  db.get(sql, [req.body["username"]], (err, rows) => {
+    if (err) {
+      return res.status(500).json({message: 'Something went wrong. Please try again later.'});
+    }
+
+    if(rows) {
+      salt = rows['salt']
+
+      let hash = crypto.pbkdf2Sync(req.body["password"], salt,  
+      1000, 64, `sha512`).toString(`hex`);
+
+      if(rows['password'] === hash) {
+        return res.status(200).json({user: rows});
+      } else {
+        return res.status(401).json({message: 'Username or password is incorrect.'});
+      }
+    } else {
+      return res.status(401).json({message: 'Username or password is incorrect.'});
+    }
+  });
+});
+
 app.listen(PORT, HOST);
 console.log(`Running on http://${HOST}:${PORT}`);
 require('./database/seed.js');
