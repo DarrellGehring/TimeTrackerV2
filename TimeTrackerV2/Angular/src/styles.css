@@ -4,6 +4,7 @@
 
 body {
   padding-bottom: 20px;
+  background-color: whitesmoke;
 }
 
 a {
@@ -339,12 +340,59 @@ pretty .state .check-label label:after, .pretty .state .check-label label:before
   margin-left: -7%;
 }
 
-.card-list {
-  width: 275px;
-  height: 160px;
-  padding: 10px;
-  margin: 10px;
-  border-radius: 5px;
-  box-shadow: 2px 2px 10px #888888;
+.mt-6 {
+    margin-top: 6% !important;
 }
 
+.mt-7 {
+  margin-top: 7% !important;
+}
+
+.mt-8 {
+  margin-top: 8% !important;
+}
+
+
+/* Navbar styles */
+.spacer {
+  flex: 1;
+}
+
+.custom-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0,123,255, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.custom-toggler.navbar-toggler {
+  border-color: #007bff;
+}
+
+.navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  background-color: #492365;
+  color: #007bff;
+  font-weight: 600;
+}
+
+  .navbar img {
+    margin: 0 16px;
+  }
+
+  .navbar #usernamelbl {
+    margin: 0 16px;
+  }
+
+a,
+a:visited,
+a:hover {
+  text-decoration: none;
+}
+
+  a:hover {
+    color: #125699;
+  }
