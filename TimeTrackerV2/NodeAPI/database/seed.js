@@ -1,3 +1,5 @@
+const { Database } = require('sqlite3');
+
 const sqlite3 = require('sqlite3').verbose();
 
 let db = new sqlite3.Database('./database/main.db', sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE, (err) => {
@@ -15,3 +17,11 @@ db.run(`CREATE TABLE IF NOT EXISTS Users(userID INTEGER PRIMARY KEY,
                             type TEXT NOT NULL,
                             isActive BOOL NOT NULL,
                             salt TEXT NOT NULL);`)
+
+db.run(`CREATE TABLE IF NOT EXISTS TimeCard(timeslotID INTEGER PRIMARY KEY, 
+                            timeIn TEXT NOT NULL,
+                            timeOut TEXT,
+                            isEdited bool NOT NULL,
+                            createdOn TEXT NOT NULL,
+                            userID INTEGER NOT NULL,
+                            description TEXT);`)
