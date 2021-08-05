@@ -78,17 +78,18 @@
       </div>
     </div>
   </div>
+  <label id="lblName"> test </label>
   <!-- start or end time  -->
   <div class="row mt-4">
     <div class="col-12 mb-2">
       <!-- ng-click="startTime()"
     ng-if="userActiveInGroup() && !hasUnfinishedBusiness()" -->
-      <button class="btn btn-success">
+      <button (click)="clockIn()" class="btn btn-success">
         Start Time
       </button>
       <!-- ng-click="endTime()"
       ng-if="userActiveInGroup() && hasUnfinishedBusiness()" -->
-      <button class="btn btn-warning">
+      <button (click)="clockOut()" class="btn btn-warning">
         End Time
       </button>
     </div>
