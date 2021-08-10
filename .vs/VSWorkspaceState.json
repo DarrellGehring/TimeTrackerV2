@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\TimeTrackerV2",
+    "\\TimeTrackerV2\\Angular",
+    "\\TimeTrackerV2\\Angular\\src",
+    "\\TimeTrackerV2\\Angular\\src\\app",
+    "\\TimeTrackerV2\\Angular\\src\\app\\dashboard",
+    "\\TimeTrackerV2\\Angular\\src\\app\\login",
+    "\\TimeTrackerV2\\Angular\\src\\app\\project",
+    "\\TimeTrackerV2\\Angular\\src\\app\\register",
+    "\\TimeTrackerV2\\Angular\\TimeTrackerV2"
+  ],
+  "SelectedNode": "\\TimeTrackerV2\\Angular\\src\\app\\dashboard\\dashboard.component.ts",
+  "PreviewInSolutionExplorer": false
+}

@@ -17,7 +17,9 @@
       <div class="position-relative">
         <h5>Projects</h5>
         <!-- ng-if="$parent.user.type === 'A' || $parent.user.userID === course.instructorId" ng-click="createProject()" -->
-        <i class="fa fa-plus mt-2 mr-2 my-auto small-button" title="Create a new project."></i>
+        <button (click)="createProject()">
+          <i class="fa fa-plus mt-2 mr-2 my-auto small-button" title="Create a new project."></i>
+        </button>
         <!-- ng-if="$parent.user.type === 'A' || $parent.user.userID === course.instructorId" -->
         <div class="float-right mt-4 mr-5 pretty p-switch p-slim top-right-checkbox">
           <!-- ng-model="config.showInactiveProjects" -->

@@ -25,15 +25,17 @@
       <div class="position-relative">
         <h5>Groups</h5>
         <!-- ng-click="createGroup()" -->
-        <i class="fa fa-plus mt-2 mr-2 my-auto small-button" title="Create a new group."></i>
-        <!-- ng-if="$parent.user.type === 'A' || $parent.user.type === 'I'" -->
-        <div class="float-right mt-4 mr-5 pretty p-switch p-slim top-right-checkbox">
-          <!-- ng-model="config.showInactiveGroups" ng-change="updateChart()" -->
-          <input type="checkbox" />
-          <div class="float-left mr-3 mt-2 state">
-            <label>Show Inactive</label>
+        <button (click)="createGroup()">
+          <i class="fa fa-plus mt-2 mr-2 my-auto small-button" title="Create a new group."></i>
+        </button>
+          <!-- ng-if="$parent.user.type === 'A' || $parent.user.type === 'I'" -->
+          <div class="float-right mt-4 mr-5 pretty p-switch p-slim top-right-checkbox">
+            <!-- ng-model="config.showInactiveGroups" ng-change="updateChart()" -->
+            <input type="checkbox" />
+            <div class="float-left mr-3 mt-2 state">
+              <label>Show Inactive</label>
+            </div>
           </div>
-        </div>
       </div>
 
       <div class="card">

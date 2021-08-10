@@ -25,3 +25,20 @@ db.run(`CREATE TABLE IF NOT EXISTS TimeCard(timeslotID INTEGER PRIMARY KEY,
                             createdOn TEXT NOT NULL,
                             userID INTEGER NOT NULL,
                             description TEXT);`)
+
+db.run(`CREATE TABLE IF NOT EXISTS Groups(groupID INTEGER PRIMARY KEY,
+                            groupName TEXT NOT NULL,
+                            isActive BOOL NOT NULL,
+                            projectID INTEGER NOT NULL);`)
+
+db.run(`CREATE TABLE IF NOT EXISTS Courses(courseID INTEGER PRIMARY KEY, 
+                            courseName TEXT NOT NULL,
+                            isActive BOOL NOT NULL,
+                            instructorID INTEGER NOT NULL,
+                            description TEXT);`)
+
+db.run(`CREATE TABLE IF NOT EXISTS Projects(projectID INTEGER PRIMARY KEY, 
+                            projectName TEXT NOT NULL,
+                            isActive BOOL NOT NULL,
+                            courseID INTEGER NOT NULL,
+                            description TEXT);`)
