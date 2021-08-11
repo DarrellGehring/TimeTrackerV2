@@ -89,7 +89,6 @@ app.post('/login', async (req, res, next) => {
     return (!str || str.length === 0 );
   }
 
-  console.log(req.body);
 
   if(isEmpty(req.body["username"]) ||
   isEmpty(req.body["password"])) {
@@ -123,18 +122,22 @@ app.post('/clock', async (req, res, next) => {
   function isEmpty(str) {
     return (!str || str.length === 0 );
   }
+  
   let isValid = true;
   let isClockin = req.body["timeIn"] !== null;
   let sql = `SELECT * FROM TimeCard WHERE UserID = ?`;
-  db.get(sql, [req.body["UserID"]], (err, rows) => {
-    if (err) {
+  db.all(sql, [req.body["userID"]], (error, rows) => 
+  {
+    if (error) {
       return res.status(500).json({message: 'Something went wrong. Please try again later.'});
     }
 
     if(isClockin){
-      rows.array.forEach(row => {
-        isValid = !(row['timeOut'] === null);
+      console.log("clocking in.");
+      rows.forEach(row => {
+        isValid = (row['timeOut'] !== null);
       });
+
       if(!isValid){
         return res.status(400).json({message: 'you have an outstanding clock in. Please clock out.'});
       }
@@ -143,12 +146,13 @@ app.post('/clock', async (req, res, next) => {
 
       data[0] = req.body["timeIn"];
       data[1] = false;
-      data[2] = req.body["timeIn"];
+      data[2] = req.body["createdOn"];
       data[3] = req.body["userID"];
       data[4] = req.body["description"];
 
-      db.run(`INSERT INTO TimeCard(timeIn, isEdited, createdOn, userID, description) VALUES(?, ?, ?, ?, ?, ?)`, data, function(err,rows){
+      db.run(`INSERT INTO TimeCard(timeIn, isEdited, createdOn, userID, description) VALUES(?, ?, ?, ?, ?)`, data, function(err,value){
         if(err){
+          console.log(err)
           return res.status(500).json({message: 'Something went wrong. Please try again later.'});
         }
         else{
@@ -157,13 +161,16 @@ app.post('/clock', async (req, res, next) => {
       });
     }
     else{//clocking out
+      console.log("clocking out.");
       let isNullTimeOut = false;
       let ID = 0;
-      rows.array.forEach(row => {
+      rows.every(row => {
         isNullTimeOut = row["timeOut"] === null;
         if(isNullTimeOut){
           ID = row["timeslotID"];
+          return false;
         }
+        return true;
       });
 
       isValid = isNullTimeOut;
@@ -177,16 +184,15 @@ app.post('/clock', async (req, res, next) => {
       data[1] = req.body["description"];
       data[2] = ID;
 
-      db.run(`UPDATE TimeCard SET timeOut = ? , description = ? WHERE timeslotID = ? `, data, function(err, rows){
+      db.run(`UPDATE TimeCard SET timeOut = ? , description = ? WHERE timeslotID = ? `, data, function(err, value){
         if(err){
+          console.log(err)
           return res.status(500).json({message: 'Something went wrong. Please try again later.'});
         }
         else{
           return res.status(200).json({message: 'Clocked out successfully.'});
         }
       });
-
-
     }
   });  
 });

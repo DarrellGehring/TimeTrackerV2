@@ -40,7 +40,8 @@ export class GroupComponent implements OnInit {
           description: null /// pull description from the HTML
         };
       
-
+        console.log(req);
+        
       if (req !== null)
       {
         this.http.post<any>('http://localhost:8080/clock/', req, {headers: new HttpHeaders({"Access-Control-Allow-Headers": "Content-Type"})}).subscribe({
