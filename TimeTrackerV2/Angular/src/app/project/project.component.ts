@@ -10,13 +10,21 @@ import {Router} from '@angular/router';
 export class ProjectComponent implements OnInit {
   public pageTitle = 'TimeTrackerV2 | Project'
   public errMsg = '';
+  private item;
+  public projectName;
+  public projectDescription;
 
   constructor(
     private http: HttpClient,
     private router: Router,
   ) {
-    var item = localStorage.getItem('currentProject');
-    console.log("The current project is: " + item);
+    this.item = localStorage.getItem('currentProject');
+    console.log("The current project is: " + this.item);
+    if(this.item) {
+      this.item = JSON.parse(this.item);
+      this.projectName = this.item[0];
+      this.projectDescription = this.item[3];
+    }
   }
 
   ngOnInit(): void {

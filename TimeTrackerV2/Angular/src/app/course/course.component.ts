@@ -11,13 +11,21 @@ import {Router} from '@angular/router';
 export class CourseComponent implements OnInit {
   public pageTitle = 'TimeTrackerV2 | Course'
   public errMsg = '';
+  private item;
+  public courseName;
+  public courseDescription;
 
   constructor(
     private http: HttpClient,
     private router: Router,
   ) { 
-    var item = localStorage.getItem('currentCourse');
-    console.log("The current course is: " + item);
+    this.item = localStorage.getItem('currentCourse');
+    console.log("The current course is: " + this.item);
+    if(this.item) {
+      this.item = JSON.parse(this.item);
+      this.courseName = this.item[0];
+      this.courseDescription = this.item[3];
+    }
   }
 
   ngOnInit(): void {

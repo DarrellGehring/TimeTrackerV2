@@ -11,13 +11,19 @@ import {Router} from '@angular/router';
 export class GroupComponent implements OnInit {
   public pageTitle = 'TimeTrackerV2 | Group'
   public errMsg = '';
+  private item;
+  public groupName;
 
   constructor(
     private http: HttpClient,
     private router: Router,
   ) { 
-    var item = localStorage.getItem('currentGroup');
-    console.log("The current group is: " + item);
+    this.item = localStorage.getItem('currentGroup');
+    console.log("The current group is: " + this.item);
+    if (this.item) {
+      this.item = JSON.parse(this.item);
+      this.groupName = this.item[0];
+    }
   }
 
   ngOnInit(): void {
