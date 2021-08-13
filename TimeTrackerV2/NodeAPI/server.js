@@ -195,7 +195,8 @@ app.post('/createProject', async (req, res, next) => {
           return res.status(200).json({project: data});
       }
   });
-  
+});
+
 app.post('/clock', async (req, res, next) => {
   function isEmpty(str) {
     return (!str || str.length === 0 );
