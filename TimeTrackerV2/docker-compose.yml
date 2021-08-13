@@ -2,6 +2,8 @@ version: "3.9"
 services:
     angular:
         tty: true
+        environment: 
+            - CHOKIDAR_USEPOLLING=true
         build:
             context: './Angular'
             dockerfile: Dockerfile
@@ -12,6 +14,8 @@ services:
             - /usr/src/app/node_modules
     node:
         tty: true
+        environment: 
+            - CHOKIDAR_USEPOLLING=true
         build:
             context: './NodeAPI'
             dockerfile: Dockerfile

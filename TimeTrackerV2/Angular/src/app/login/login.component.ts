@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
     this.http.post<any>('http://localhost:8080/login/', payload, {headers: new HttpHeaders({"Access-Control-Allow-Headers": "Content-Type"})}).subscribe({
       next: data => {
         this.errMsg = "";
-        localStorage.setItem('currentUser', data['user']);
+        localStorage.setItem('currentUser', JSON.stringify(data['user']));
         this.router.navigate(['./dashboard']);
       },
       error: error => {
