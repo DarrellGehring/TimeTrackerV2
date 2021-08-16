@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../user.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {Router} from '@angular/router';
+import { User } from '../user.model';
 
 @Component({
   selector: 'app-group',
@@ -9,18 +10,26 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 
 export class GroupComponent implements OnInit {
-
+  public pageTitle = 'TimeTrackerV2 | Group'
   public errMsg = '';
   private user!: User;
-  
+  private item;
+  public groupName;
+
   constructor(
     private http: HttpClient,
-    ) {}
+    private router: Router,
+  ) { 
+    this.item = localStorage.getItem('currentGroup');
+    console.log("The current group is: " + this.item);
+    if (this.item) {
+      this.item = JSON.parse(this.item);
+      this.groupName = this.item[0];
+    }
+  }
 
   ngOnInit(): void {
   }
-
-  public pageTitle = 'TimeTrackerV2 | Group'
 
   clockIn(): void {
     var item = localStorage.getItem('currentUser');

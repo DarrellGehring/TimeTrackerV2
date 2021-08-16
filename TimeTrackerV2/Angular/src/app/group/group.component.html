@@ -5,7 +5,7 @@
     ng-change="saveGroup()" ng-model="group.groupName",
     ng-class="{'input-header-admin': ($parent.user.type === 'A' || userInGroup() || $parent.user.type === 'I')}",
     ng-readonly="$parent.user.type !== 'A' && $parent.user.type !== 'I'"-->
-      <input id="group_name" class="input-header" type="text" name="groupName" />
+      <input id="group_name" class="input-header" type="text" name="groupName" [(ngModel)]="groupName"/>
     </h4>
 
     <!-- if you are an admin or instructor decide if group is active -->
